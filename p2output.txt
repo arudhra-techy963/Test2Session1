@@ -1,1 +1,92 @@
+gcc -g p2original.c -lm
+ gdb a.out 
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main 
+Breakpoint 1 at 0x772: file p2original.c, line 10.
+(gdb) r
+Starting program: /home/runner/Test2Session1/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p2original.c:10
+10  {
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) t
+Please answer y or n.
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/runner/Test2Session1/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p2original.c:10
+10  {
+(gdb) n
+13    input_triangle(&x1,&y1,&x2,&y2,&x3,&y3);
+(gdb) s
+input_triangle (x1=0x7fff2545ccfc, y1=0x7fff2545cd00, x2=0x7fff2545cd04, 
+    y2=0x7fff2545cd08, x3=0x7fff2545cd0c, y3=0x7fff2545cd10) at p2original.c:22
+22    printf("Input x1: ");
+(gdb) n
+23      scanf("%f", x1);
+(gdb) n
+Input x1: 12 
+24      printf("Input y1: ");
+(gdb) n
+25      scanf("%f", y1);
+(gdb) n
+Input y1: 22
+26    printf("Input x2: ");
+(gdb) n
+27      scanf("%f", x2);
+(gdb) n
+Input x2: 14
+28      printf("Input y2: ");
+(gdb) n
+29      scanf("%f", y2);
+(gdb) n
+Input y2: 15
+30    printf("Input x3: ");
+(gdb) n
+31      scanf("%f", x3);
+(gdb) n
+Input x3: 25
+32      printf("Input y3: ");
+(gdb) n
+33      scanf("%f", y3);
+(gdb) n
+Input y3: 26
+34  }
+(gdb) n
+main () at p2original.c:14
+14    istriangle = is_triangle(x1,y1,x2,y2,x3,y3);
+(gdb) s
+is_triangle (x1=12, y1=22, x2=14, y2=15, x3=25, y3=26) at p2original.c:39
+39    istriangle = x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2);
+(gdb) n
+40    return istriangle;
+(gdb) n
+41  }
+(gdb) n
+main () at p2original.c:15
+15    output(x1,y1,x2,y2,x3,y3,istriangle);
+(gdb) c
+Continuing.
+yes the points do form a triangle!!
+[Inferior 1 (process 575) exited normally]
+(gdb) n
+The program is not being run.
+(gdb) q
